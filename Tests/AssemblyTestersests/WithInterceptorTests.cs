@@ -11,11 +11,12 @@ public class WithInterceptorTests
 {
     AssemblyWeaver assemblyWeaver;
     FieldInfo methodBaseField;
+    string beforeAssemblyPath;
 
     public WithInterceptorTests()
     {
-        var assemblyPath = Path.GetFullPath(@"..\..\..\AssemblyWithInterceptor\bin\Debug\AssemblyWithInterceptor.dll");
-        assemblyWeaver = new AssemblyWeaver(assemblyPath);
+        beforeAssemblyPath = Path.Combine(TestContext.CurrentContext.TestDirectory, @"..\..\..\AssemblyWithInterceptor\bin\Debug\AssemblyWithInterceptor.dll");
+        assemblyWeaver = new AssemblyWeaver(beforeAssemblyPath);
         var methodTimeLogger = assemblyWeaver.Assembly.GetType("MethodTimeLogger");
         methodBaseField = methodTimeLogger.GetField("MethodBase");
     }
@@ -49,7 +50,7 @@ public class WithInterceptorTests
     [Test]
     public void PeVerify()
     {
-        Verifier.Verify(assemblyWeaver.Assembly.CodeBase.Remove(0, 8));
+        Verifier.Verify(beforeAssemblyPath, assemblyWeaver.AfterAssemblyPath);
     }
 
     [Test]
@@ -88,12 +89,12 @@ public class WithInterceptorTests
     public void ClassWithAsyncMethodThatThrowsException()
     {
         var type = assemblyWeaver.Assembly.GetType("ClassWithAsyncMethod");
-        var instance = (dynamic)Activator.CreateInstance(type);
+        var instance = (dynamic) Activator.CreateInstance(type);
         DebugRunner.CaptureDebug(() =>
         {
             try
             {
-                var task = (Task)instance.MethodWithAwaitAndExceptionAsync();
+                var task = (Task) instance.MethodWithAwaitAndExceptionAsync();
                 task.Wait();
             }
             catch (Exception)
@@ -113,10 +114,10 @@ public class WithInterceptorTests
     public void ClassWithAsyncMethodWithFastPath(bool recurse)
     {
         var type = assemblyWeaver.Assembly.GetType("ClassWithAsyncMethod");
-        var instance = (dynamic)Activator.CreateInstance(type);
+        var instance = (dynamic) Activator.CreateInstance(type);
         DebugRunner.CaptureDebug(() =>
         {
-            var task = (Task)instance.MethodWithFastPathAsync(recurse);
+            var task = (Task) instance.MethodWithFastPathAsync(recurse);
             task.Wait();
         });
 

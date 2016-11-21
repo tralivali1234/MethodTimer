@@ -10,12 +10,14 @@ public class WithInterceptorInReferenceTests
 {
     AssemblyWeaver assemblyWeaver;
     FieldInfo methodBaseField;
+    string beforeAssemblyPath;
 
     public WithInterceptorInReferenceTests()
     {
-        var assemblyPath = Path.GetFullPath(@"..\..\..\AssemblyWIthInterceptorInReference\bin\Debug\AssemblyWIthInterceptorInReference.dll");
-        var assemblyToReference = AssemblyWeaver.FixAssemblyPath(Path.GetFullPath(@"..\..\..\AssemblyToReference\bin\Debug\AssemblyToReference.dll"));
-        assemblyWeaver = new AssemblyWeaver(assemblyPath, new List<string> { assemblyToReference });
+        beforeAssemblyPath = Path.Combine(TestContext.CurrentContext.TestDirectory, @"..\..\..\AssemblyWIthInterceptorInReference\bin\Debug\AssemblyWIthInterceptorInReference.dll");
+        var assemblyToReferencePath = Path.Combine(TestContext.CurrentContext.TestDirectory, @"..\..\..\AssemblyToReference\bin\Debug\AssemblyToReference.dll");
+        var assemblyToReference = AssemblyWeaver.FixAssemblyPath(assemblyToReferencePath);
+        assemblyWeaver = new AssemblyWeaver(beforeAssemblyPath, new List<string> {assemblyToReference});
 
         var interceptorAssembly = Assembly.LoadFrom(assemblyToReference);
         var methodTimeLogger = interceptorAssembly.GetType("MethodTimeLogger");
@@ -27,7 +29,7 @@ public class WithInterceptorInReferenceTests
     {
         ClearMessage();
         var type = assemblyWeaver.Assembly.GetType("ClassWithMethod");
-        var instance = (dynamic)Activator.CreateInstance(type);
+        var instance = (dynamic) Activator.CreateInstance(type);
         instance.Method();
         var methodBases = GetMethodInfoField();
         Assert.AreEqual(1, methodBases.Count);
@@ -43,13 +45,13 @@ public class WithInterceptorInReferenceTests
 
     List<MethodBase> GetMethodInfoField()
     {
-        return (List<MethodBase>)methodBaseField.GetValue(null);
+        return (List<MethodBase>) methodBaseField.GetValue(null);
     }
 
     [Test]
     public void PeVerify()
     {
-        Verifier.Verify(assemblyWeaver.Assembly.CodeBase.Remove(0, 8));
+        Verifier.Verify(beforeAssemblyPath, assemblyWeaver.AfterAssemblyPath);
     }
 
 }

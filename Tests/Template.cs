@@ -3,19 +3,20 @@ using System.Diagnostics;
 using System.Linq;
 using Mono.Cecil;
 using NUnit.Framework;
+// ReSharper disable UnusedMember.Global
 
 [TestFixture]
 public class Template
 {
     [Test]
-    [Ignore]
+    [Explicit]
     public void LookAtIL()
     {
         var moduleDefinition = ModuleDefinition.ReadModule(GetType().Assembly.Location);
         var methods = moduleDefinition.GetType("Template").Methods;
         var noWeaving = methods.First(x=>x.Name=="NoWeaving").Body;
         var withWeaving = methods.First(x => x.Name == "WithWeaving").Body;
-        Debug.WriteLine(noWeaving);
+        Trace.WriteLine(noWeaving);
     }
 
     public void NoWeaving()

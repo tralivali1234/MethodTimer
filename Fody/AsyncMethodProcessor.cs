@@ -25,7 +25,7 @@ public class AsyncMethodProcessor
         }
         catch (Exception exception)
         {
-            throw new Exception(string.Format("An error occurred processing '{0}'. Error: {1}", Method.FullName, exception.Message), exception);
+            throw new Exception($"An error occurred processing '{Method.FullName}'. Error: {exception.Message}", exception);
         }
     }
 
@@ -55,7 +55,12 @@ public class AsyncMethodProcessor
                                      fieldReference != null &&
                                      fieldReference.Name.Contains("__state")
                                select instruction).FirstOrDefault();
-        if (firstStateUsage != null)
+        if (firstStateUsage == null)
+        {
+            // Probably compiled without roslyn, inject at first line
+            index = 0;
+        }
+        else
         {
             // Initial code looks like this (hence the -1):
             //
@@ -65,11 +70,6 @@ public class AsyncMethodProcessor
             // stloc.0
             // ldloc.0
             index = body.Instructions.IndexOf(firstStateUsage) - 1;
-        }
-        else
-        {
-            // Probably compiled without roslyn, inject at first line
-            index = 0;
         }
 
         InjectStopwatch(index, body.Instructions[index]);
@@ -118,13 +118,13 @@ public class AsyncMethodProcessor
     static IEnumerable<Instruction> GetAsyncReturns(Collection<Instruction> instructions)
     {
         // There are 3 possible return points:
-        // 
+        //
         // 1) async code:
         //      awaiter.GetResult();
         //      awaiter = new TaskAwaiter();
         //
         // 2) exception handling
-        //      L_00d5: ldloc.1 
+        //      L_00d5: ldloc.1
         //      L_00d6: call instance void [mscorlib]System.Runtime.CompilerServices.AsyncTaskMethodBuilder::SetException(class [mscorlib]System.Exception)
         //
         // 3) all other returns
