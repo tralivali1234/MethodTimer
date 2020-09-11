@@ -1,31 +1,44 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
-MinimumVisualStudioVersion = 14.0.22823.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fody", "Fody\Fody.csproj", "{C3578A7B-09A6-4444-9383-0DEAFA4958BD}"
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29201.188
+MinimumVisualStudioVersion = 16.0.29201.188
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MethodTimer.Fody", "MethodTimer.Fody\MethodTimer.Fody.csproj", "{C3578A7B-09A6-4444-9383-0DEAFA4958BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{5A86453B-96FB-4B6E-A283-225BB9F753D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{5A86453B-96FB-4B6E-A283-225BB9F753D3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyWithoutInterceptor", "AssemblyWithoutInterceptor\AssemblyWithoutInterceptor.csproj", "{DFE56C18-3504-4265-A3FE-7F434B1FD38D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MethodTimer", "MethodTimer\MethodTimer.csproj", "{B5AEB0E8-28F4-4955-A055-9C200F7113F0}"
 	ProjectSection(ProjectDependencies) = postProject
-		{DFE56C18-3504-4265-A3FE-7F434B1FD38D} = {DFE56C18-3504-4265-A3FE-7F434B1FD38D}
-		{FB284053-FFAA-4866-820B-CED00B3CB4C2} = {FB284053-FFAA-4866-820B-CED00B3CB4C2}
+		{C3578A7B-09A6-4444-9383-0DEAFA4958BD} = {C3578A7B-09A6-4444-9383-0DEAFA4958BD}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyWithoutInterceptor", "AssemblyWithoutInterceptor\AssemblyWithoutInterceptor.csproj", "{DFE56C18-3504-4265-A3FE-7F434B1FD38D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyToReference", "AssemblyToReference\AssemblyToReference.csproj", "{8A015E68-6B29-4E20-879A-3E3F47B34A0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReferenceAssembly", "ReferenceAssembly\ReferenceAssembly.csproj", "{B5AEB0E8-28F4-4955-A055-9C200F7113F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyWithInterceptorInReference", "AssemblyWIthInterceptorInReference\AssemblyWithInterceptorInReference.csproj", "{918E4285-60A4-4C1A-8CAA-E257F6A0C564}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyToReference", "AssemblyToReference\AssemblyToReference.csproj", "{8A015E68-6B29-4E20-879A-3E3F47B34A0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyWithInterceptor", "AssemblyWithInterceptor\AssemblyWithInterceptor.csproj", "{EB33F608-2124-4128-820F-DC4E07E88028}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyWithInterceptorInReference", "AssemblyWIthInterceptorInReference\AssemblyWithInterceptorInReference.csproj", "{918E4285-60A4-4C1A-8CAA-E257F6A0C564}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyWithAttributeOnModule", "AssemblyWithAttributeOnModule\AssemblyWithAttributeOnModule.csproj", "{35205183-E7A9-4584-9BAC-D5D103346C84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyWithInterceptor", "AssemblyWithInterceptor\AssemblyWithInterceptor.csproj", "{EB33F608-2124-4128-820F-DC4E07E88028}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyWithAttributeOnAssembly", "AssemblyWithAttributeOnAssembly\AssemblyWithAttributeOnAssembly.csproj", "{6C028879-7E51-44E3-A3C4-0A01353EEF19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyWithAttributeOnModule", "AssemblyWithAttributeOnModule\AssemblyWithAttributeOnModule.csproj", "{35205183-E7A9-4584-9BAC-D5D103346C84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyWithNopInterceptor", "AssemblyWithNopInterceptor\AssemblyWithNopInterceptor.csproj", "{FB284053-FFAA-4866-820B-CED00B3CB4C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyWithAttributeOnAssembly", "AssemblyWithAttributeOnAssembly\AssemblyWithAttributeOnAssembly.csproj", "{6C028879-7E51-44E3-A3C4-0A01353EEF19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyWithInterceptorAndFormattingWithoutOverload", "AssemblyWithInterceptorAndFormattingWithoutOverload\AssemblyWithInterceptorAndFormattingWithoutOverload.csproj", "{6AD809B4-8589-4B03-9D9C-7524C774F425}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyWithNopInterceptor", "AssemblyWithNopInterceptor\AssemblyWithNopInterceptor.csproj", "{FB284053-FFAA-4866-820B-CED00B3CB4C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyWithInterceptorAndFormatting", "AssemblyWithInterceptorAndFormatting\AssemblyWithInterceptorAndFormatting.csproj", "{A98F0A2C-6707-49E1-8D3F-ACFF0321B4F3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyWithInterceptorAndFormattingWithWrongParameters", "AssemblyWithInterceptorAndFormattingWithWrongParameters\AssemblyWithInterceptorAndFormattingWithWrongParameters.csproj", "{BD3C1F7C-DBEE-4C57-86D2-0074145A7566}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4C58DB24-EE4E-4500-99EF-949B6877AFC5}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyWithTimeSpanInterceptorAndFormatting", "AssemblyWithTimeSpanInterceptorAndFormatting\AssemblyWithTimeSpanInterceptorAndFormatting.csproj", "{738F52D9-7ACA-4BCC-907E-5771D9A9B351}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyWithInterceptorAndFormattingWithThisInStaticMember", "AssemblyWithInterceptorAndFormattingWithThisInStaticMember\AssemblyWithInterceptorAndFormattingWithThisInStaticMember.csproj", "{12DDBBCA-230F-40A5-BF41-1B79732993DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,8 +110,51 @@ Global
 		{FB284053-FFAA-4866-820B-CED00B3CB4C2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FB284053-FFAA-4866-820B-CED00B3CB4C2}.Release|x86.ActiveCfg = Release|Any CPU
 		{FB284053-FFAA-4866-820B-CED00B3CB4C2}.Release|x86.Build.0 = Release|Any CPU
+		{6AD809B4-8589-4B03-9D9C-7524C774F425}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AD809B4-8589-4B03-9D9C-7524C774F425}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AD809B4-8589-4B03-9D9C-7524C774F425}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6AD809B4-8589-4B03-9D9C-7524C774F425}.Debug|x86.Build.0 = Debug|Any CPU
+		{6AD809B4-8589-4B03-9D9C-7524C774F425}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AD809B4-8589-4B03-9D9C-7524C774F425}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AD809B4-8589-4B03-9D9C-7524C774F425}.Release|x86.ActiveCfg = Release|Any CPU
+		{6AD809B4-8589-4B03-9D9C-7524C774F425}.Release|x86.Build.0 = Release|Any CPU
+		{A98F0A2C-6707-49E1-8D3F-ACFF0321B4F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A98F0A2C-6707-49E1-8D3F-ACFF0321B4F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A98F0A2C-6707-49E1-8D3F-ACFF0321B4F3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A98F0A2C-6707-49E1-8D3F-ACFF0321B4F3}.Debug|x86.Build.0 = Debug|Any CPU
+		{A98F0A2C-6707-49E1-8D3F-ACFF0321B4F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A98F0A2C-6707-49E1-8D3F-ACFF0321B4F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A98F0A2C-6707-49E1-8D3F-ACFF0321B4F3}.Release|x86.ActiveCfg = Release|Any CPU
+		{A98F0A2C-6707-49E1-8D3F-ACFF0321B4F3}.Release|x86.Build.0 = Release|Any CPU
+		{BD3C1F7C-DBEE-4C57-86D2-0074145A7566}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD3C1F7C-DBEE-4C57-86D2-0074145A7566}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD3C1F7C-DBEE-4C57-86D2-0074145A7566}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BD3C1F7C-DBEE-4C57-86D2-0074145A7566}.Debug|x86.Build.0 = Debug|Any CPU
+		{BD3C1F7C-DBEE-4C57-86D2-0074145A7566}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD3C1F7C-DBEE-4C57-86D2-0074145A7566}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD3C1F7C-DBEE-4C57-86D2-0074145A7566}.Release|x86.ActiveCfg = Release|Any CPU
+		{BD3C1F7C-DBEE-4C57-86D2-0074145A7566}.Release|x86.Build.0 = Release|Any CPU
+		{738F52D9-7ACA-4BCC-907E-5771D9A9B351}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{738F52D9-7ACA-4BCC-907E-5771D9A9B351}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{738F52D9-7ACA-4BCC-907E-5771D9A9B351}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{738F52D9-7ACA-4BCC-907E-5771D9A9B351}.Debug|x86.Build.0 = Debug|Any CPU
+		{738F52D9-7ACA-4BCC-907E-5771D9A9B351}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{738F52D9-7ACA-4BCC-907E-5771D9A9B351}.Release|Any CPU.Build.0 = Release|Any CPU
+		{738F52D9-7ACA-4BCC-907E-5771D9A9B351}.Release|x86.ActiveCfg = Release|Any CPU
+		{738F52D9-7ACA-4BCC-907E-5771D9A9B351}.Release|x86.Build.0 = Release|Any CPU
+		{12DDBBCA-230F-40A5-BF41-1B79732993DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12DDBBCA-230F-40A5-BF41-1B79732993DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12DDBBCA-230F-40A5-BF41-1B79732993DC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{12DDBBCA-230F-40A5-BF41-1B79732993DC}.Debug|x86.Build.0 = Debug|Any CPU
+		{12DDBBCA-230F-40A5-BF41-1B79732993DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12DDBBCA-230F-40A5-BF41-1B79732993DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12DDBBCA-230F-40A5-BF41-1B79732993DC}.Release|x86.ActiveCfg = Release|Any CPU
+		{12DDBBCA-230F-40A5-BF41-1B79732993DC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC0A1DC8-E17F-454A-8138-8460313CE269}
 	EndGlobalSection
 EndGlobal
